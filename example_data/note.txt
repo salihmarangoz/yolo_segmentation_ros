@@ -1,0 +1,6 @@
+Images are taken from:
+- armbag_2020-09-11-13-48-07_AUTO_SAMPLING.bag
+- armbag_2020-09-11-14-38-57_EXPLO_SAMPLING.bag
+
+Video is modified from:
+- armbag_2022-10-13-12-08-11.bag.mp4
