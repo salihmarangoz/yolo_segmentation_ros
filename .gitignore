@@ -1,3 +1,4 @@
 *.pt
 __pycache__/
 predict/bus.jpg
+train/datasets
