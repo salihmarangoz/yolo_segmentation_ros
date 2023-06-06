@@ -4,7 +4,7 @@ Sweet pepper detection+segmentation+tracking via YOLOv8. Alternative to `agrobot
 
 Watch my quick experiment on YouTube:
 
-[![Watch the video](https://img.youtube.com/vi/-6Ovr3F5Ew4/maxresdefault.jpg)](https://youtu.be/-6Ovr3F5Ew4)
+[![Watch the video](https://img.youtube.com/vi/-oo29vo7gBQ/maxresdefault.jpg)](https://youtu.be/-oo29vo7gBQ)
 
 ## Important Information!
 
@@ -71,5 +71,6 @@ $ cd yolo_segmentation_ros/predict
 
 ## ROS Node
 
-The ROS node script is located here: `scripts/ros1_node.py`
+The ROS node script is located here: `scripts/ros_node.py`
 
+TODO
