@@ -42,4 +42,10 @@ If you would like to skip the training part, download the `best.pt` from [HERE](
   $ python predict_video.py.py
   ```
 
+- Predict using images:
+
+  ```
+  $ python predict_images.py
+  ```
+
   

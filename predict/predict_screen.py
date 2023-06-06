@@ -16,6 +16,8 @@ bbox = (left, top, right, lower)
 # Load model
 model = YOLO(SCRIPT_PATH + "/../model/best.pt")
 
+cv_window_str = "YOLOv8. PRESS Q TO QUIT. PRESS OTHER KEYS TO CONTINUE."
+cv2.namedWindow(cv_window_str, cv2.WINDOW_NORMAL)
 with mss() as sct:
     while True:
         frame = np.array( sct.grab(bbox) )[:,:,:3]
@@ -28,11 +30,10 @@ with mss() as sct:
         annotated_frame = results[0].plot()
 
         # Display the annotated frame
-        cv2.imshow("YOLOv8 Inference", annotated_frame)
+        cv2.imshow(cv_window_str, annotated_frame)
 
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-cap.release()
 cv2.destroyAllWindows()

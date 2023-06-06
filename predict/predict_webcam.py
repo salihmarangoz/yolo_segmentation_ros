@@ -14,6 +14,8 @@ model = YOLO(model_path)
 cap = cv2.VideoCapture(0)
 
 # Loop through the video frames
+cv_window_str = "YOLOv8. PRESS Q TO QUIT"
+cv2.namedWindow(cv_window_str, cv2.WINDOW_NORMAL)
 while cap.isOpened():
     # Read a frame from the video
     success, frame = cap.read()
@@ -26,7 +28,7 @@ while cap.isOpened():
         annotated_frame = results[0].plot()
 
         # Display the annotated frame
-        cv2.imshow("YOLOv8 Inference", annotated_frame)
+        cv2.imshow(cv_window_str, annotated_frame)
 
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
