@@ -16,7 +16,7 @@ Watch my quick experiment on YouTube:
 $ pip install -r requirements.txt
 ```
 
-If you would like to skip the training part, download the `best.pt` from [HERE](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder.
+**Download Model:** If you would like to skip the training part, download the `best.pt` from [HERE](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models.
 
 Tested on;
 
