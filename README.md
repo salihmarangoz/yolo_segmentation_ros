@@ -28,13 +28,21 @@ Tested on;
 
 ## Training
 
+ ```bash
+ $ cd yolo_segmentation_ros/train
+ ```
+
 1. Download [BUP20](http://agrobotics.uni-bonn.de/sweet_pepper_dataset/) dataset and extract `BUP20.tar.gz` into the a folder.
 
 2. Run the notebook `train/bup20_to_yolov8.ipynb ` to create yolov8 dataset. Modify `DATASET_PATH` at the top of the notebook.
 3. Run the script `train/train.py` for training. This should take about 15-20 mins.
-4. Copy the model into
+4. Copy the `train/runs/segment/train/weights/best.pt` to `model/best.pt`
 
 ## Prediction
+
+```bash
+$ cd yolo_segmentation_ros/predict
+```
 
 - Predict a region of your screen:
 
@@ -60,4 +68,8 @@ Tested on;
   $ python predict_images.py
   ```
 
-  
+
+## ROS Node
+
+The ROS node script is located here: `scripts/ros1_node.py`
+

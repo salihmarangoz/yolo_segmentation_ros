@@ -2,3 +2,4 @@
 __pycache__/
 predict/bus.jpg
 train/datasets
+train/runs
