@@ -22,9 +22,9 @@ Tested on;
 
 - Ubuntu 20.04 + ROS Noetic
 - Ryzen 5900HX + RTX3080M 16GB
-
 - Nvidia Driver 525.105.17
 - CUDA 11.7
+- **ultralytics 8.0.114**
 
 ## Training
 
