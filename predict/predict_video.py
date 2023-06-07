@@ -1,9 +1,10 @@
 import cv2
 from ultralytics import YOLO
 import torch
-
 import os
 SCRIPT_PATH=os.path.dirname(os.path.realpath(__file__))
+
+SKIP_FRAMES = 5
 
 # Load the YOLOv8 model
 model_path = SCRIPT_PATH + "/../model/best.pt"
@@ -13,7 +14,8 @@ model = YOLO(model_path)
 for k,v in model.names.items():
   if v == "orange":
     model.names[k] = "pepper"
-    break
+  if v == "person":
+    model.names[k] = "pepper"
 
 # Open the video file
 video_path = SCRIPT_PATH + "/../example_data/video.mp4"
@@ -25,6 +27,10 @@ cv2.namedWindow(cv_window_str, cv2.WINDOW_NORMAL)
 while cap.isOpened():
     # Read a frame from the video
     success, frame = cap.read()
+
+    # Skip some frames to speed-up the video
+    for i in range(SKIP_FRAMES):
+        success, frame = cap.read()
 
     if success:
         # Run YOLOv8 inference on the frame

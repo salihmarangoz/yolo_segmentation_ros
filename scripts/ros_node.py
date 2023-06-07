@@ -41,7 +41,8 @@ class YoloNode:
     for k,v in self.model.names.items():
       if v == "orange":
         self.model.names[k] = "pepper"
-        break
+      if v == "person":
+        self.model.names[k] = "pepper"
 
     self.bridge = CvBridge()
 

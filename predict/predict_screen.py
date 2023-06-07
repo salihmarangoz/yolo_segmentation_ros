@@ -20,7 +20,8 @@ model = YOLO(SCRIPT_PATH + "/../model/best.pt")
 for k,v in model.names.items():
   if v == "orange":
     model.names[k] = "pepper"
-    break
+  if v == "person":
+    model.names[k] = "pepper"
 
 cv_window_str = "YOLOv8. PRESS Q TO QUIT. PRESS OTHER KEYS TO CONTINUE."
 cv2.namedWindow(cv_window_str, cv2.WINDOW_NORMAL)

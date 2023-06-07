@@ -14,7 +14,8 @@ model = YOLO(model_path)
 for k,v in model.names.items():
   if v == "orange":
     model.names[k] = "pepper"
-    break
+  if v == "person":
+    model.names[k] = "pepper"
 
 # Open the video file
 cap = cv2.VideoCapture(0)

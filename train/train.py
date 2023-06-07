@@ -10,4 +10,4 @@ model = YOLO('yolov8l-seg.pt')  # load a pretrained model (recommended for train
 
 
 #model.train(data='sweet-pepper-seg.yaml', epochs=20, imgsz=640, val=True, single_cls=True, batch=8)
-model.train(data='sweet-pepper-seg.yaml', epochs=40, imgsz=640, val=True, batch=8)
+model.train(data='sweet-pepper-seg.yaml', epochs=40, imgsz=720, val=True, batch=12, single_cls=True)
