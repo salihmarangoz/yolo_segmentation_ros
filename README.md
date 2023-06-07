@@ -77,13 +77,12 @@ Check `autoannotate` folder for scripts. For more information visit [this page](
 
 The ROS node script is located here: `scripts/ros_node.py`
 
-TODO
+**TODO:** Tracking id's are computed but can't be published because there is no applicable fields in the output message types. Disable tracking by setting `~tracking` to False to reduce computations.
 
-
-
-## To-Do
-
-- [BUP19](http://agrobotics.uni-bonn.de/sweet_pepper_dataset/) has bitmap masks which needs to be processed to extract polygons. It would be a nice improvement if we can add this to the training. See https://github.com/open-mmlab/mmdetection/issues/7816
+```bash
+# Install dependency: sudo apt install ros-noetic-video_stream_opencv
+$ roslaunch yolo_segmentation_ros demo.launch
+```
 
 
 

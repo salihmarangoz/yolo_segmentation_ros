@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find yolo_segmentation_ros)/launch/start.launch"/>
+
+    <include file="$(find video_stream_opencv)/launch/camera.launch">
+        <arg name="camera_name" value="camera"/>
+        <arg name="video_stream_provider" value="$(find yolo_segmentation_ros)/example_data/video.mp4"/>
+        <arg name="buffer_queue_size" value="50"/>
+        <arg name="frame_id" value="webcam"/>
+        <arg name="camera_info_url" value=""/>
+        <arg name="flip_horizontal" value="false"/>
+        <arg name="flip_vertical" value="false"/>
+        <arg name="loop_videofile" value="true"/>
+    </include>
+
+    <node name="image_view" pkg="rqt_image_view" type="rqt_image_view" args="/yolo_segmentation_ros_node/visualization"/>
+</launch>
