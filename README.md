@@ -4,7 +4,7 @@ Sweet pepper detection+segmentation+tracking via YOLOv8. Alternative to `agrobot
 
 Watch my quick experiment on YouTube:
 
-[![Watch the video](https://img.youtube.com/vi/-oo29vo7gBQ/maxresdefault.jpg)](https://youtu.be/-oo29vo7gBQ)
+[![Watch the video](https://img.youtube.com/vi/ferqPKNXs0U/maxresdefault.jpg)](https://youtu.be/ferqPKNXs0U)
 
 ## Important Information!
 

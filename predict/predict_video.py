@@ -4,7 +4,7 @@ import torch
 import os
 SCRIPT_PATH=os.path.dirname(os.path.realpath(__file__))
 
-SKIP_FRAMES = 5
+SKIP_FRAMES = 4
 
 # Load the YOLOv8 model
 model_path = SCRIPT_PATH + "/../model/best.pt"
