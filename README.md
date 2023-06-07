@@ -6,10 +6,6 @@ Watch my quick experiment on YouTube:
 
 [![Watch the video](https://img.youtube.com/vi/ferqPKNXs0U/maxresdefault.jpg)](https://youtu.be/ferqPKNXs0U)
 
-## Important Information!
-
-[ultralytics](https://github.com/ultralytics/ultralytics) is a nice YOLOv8 package, but it comes with [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) which allows for personal and academic use **but not for commercial use!** If you would like to improve this package's license restrictions and performance, replace this library with [super-gradients](https://github.com/Deci-AI/super-gradients) which has YOLOv8-NAS outperforming ultralytics's YOLOv8. There are pretty good examples on its [Github Readme](https://github.com/Deci-AI/super-gradients) and [here](https://www.kaggle.com/general/406701).
-
 ## Installation
 
 ```bash
@@ -53,31 +49,19 @@ After these steps, the dataset should be ready. For training the model:
 
 ```bash
 $ cd yolo_segmentation_ros/predict
+
+# Predict a region of your screen:
+$ python predict_screen.py
+
+# Predict using your web-cam:
+$ python predict_webcam.py
+
+# Predict using a video:
+$ python predict_video.py.py
+
+# Predict using images:
+$ python predict_images.py
 ```
-
-- Predict a region of your screen:
-
-  ```bash
-  $ python predict_screen.py
-  ```
-
-- Predict using your web-cam:
-
-  ```bash
-  $ python predict_webcam.py
-  ```
-
-- Predict using a video:
-
-  ```bash
-  $ python predict_video.py.py
-  ```
-
-- Predict using images:
-
-  ```bash
-  $ python predict_images.py
-  ```
 
 ## Auto-Annotation
 
@@ -100,3 +84,9 @@ TODO
 ## To-Do
 
 - [BUP19](http://agrobotics.uni-bonn.de/sweet_pepper_dataset/) has bitmap masks which needs to be processed to extract polygons. It would be a nice improvement if we can add this to the training. See https://github.com/open-mmlab/mmdetection/issues/7816
+
+
+
+## AGPL-3.0 License!?
+
+[ultralytics](https://github.com/ultralytics/ultralytics) is a nice YOLOv8 package, but it comes with [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE). If you would like to improve this package's license restrictions and performance, replace this library with [super-gradients](https://github.com/Deci-AI/super-gradients) ([Apache-2.0 license](https://github.com/Deci-AI/super-gradients/blob/master/LICENSE.md)) which has YOLOv8-NAS outperforming ultralytics's YOLOv8. There are pretty good examples on its [Github Readme](https://github.com/Deci-AI/super-gradients) and [here](https://www.kaggle.com/general/406701).
