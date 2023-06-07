@@ -16,7 +16,7 @@ Watch my quick experiment on YouTube:
 $ pip install -r requirements.txt
 ```
 
-**Download Model (Currently best: `yolov8l-seg-V1`):** [If you would like to skip the training part, download the `best.pt` from here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times.
+**Download Model:** [If you would like to skip the training part, download the `best.pt` from here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times. Currently recommended: `yolov8l-seg-V1`, best nano model which can run on CPU: `yolov8n-seg-V2`
 
 Tested on;
 
@@ -27,6 +27,8 @@ Tested on;
 - **ultralytics 8.0.114**
 
 ## Training
+
+This dataset also may be available [here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing).
 
  ```bash
  $ cd yolo_segmentation_ros/train
