@@ -16,7 +16,7 @@ Watch my quick experiment on YouTube:
 $ pip install -r requirements.txt
 ```
 
-**Download Model:** If you would like to skip the training part, download the `best.pt` from [HERE](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models.
+**Download Model:** [If you would like to skip the training part, download the `best.pt` from here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times.
 
 Tested on;
 
@@ -36,8 +36,8 @@ Tested on;
    1. Download [BUP20](http://agrobotics.uni-bonn.de/sweet_pepper_dataset/) dataset and extract `BUP20.tar.gz` into a folder. (it should have the name `CKA_sweet_pepper_2020_summer`)
    2. Modify `DATASET_PATH` at the top of the notebook then run the notebook `train/bup20_to_yolov8.ipynb ` to create yolov8 dataset. 
 
-2. **(Optional)** Prepare Sweet Pepper Dataset-1 from Kaggle (nameless):
-   1. Download [Sweet Pepper Dataset from Kaggle](https://www.kaggle.com/datasets/lemontyc/sweet-pepper?resource=download) and extract into a folder. (it should have the name `dataset_620_red_yellow_cart_only`)
+2. **(Optional)** Prepare Sweet Pepper and Peduncle Segmentation Dataset from Kaggle:
+   1. Download [Sweet Pepper and Peduncle Segmentation Dataset from Kaggle](https://www.kaggle.com/datasets/lemontyc/sweet-pepper?resource=download) and extract into a folder. (it should have the name `dataset_620_red_yellow_cart_only`)
    2. Modify `DATASET_PATH` at the top of the notebook then run the notebook `train/dataset_620_to_yolov8.ipynb ` to create yolov8 dataset.
 
 3. **(Mandatory)** Split train/validation using `split_train_val.ipynb`
@@ -76,6 +76,15 @@ $ cd yolo_segmentation_ros/predict
   ```bash
   $ python predict_images.py
   ```
+
+## Auto-Annotation
+
+Check `autoannotate` folder for scripts. For more information visit [this page](https://docs.ultralytics.com/models/sam/).
+
+| Original                                      | Auto-annotated                               |
+| --------------------------------------------- | -------------------------------------------- |
+| ![2](autoannotate/data_to_be_annotated/2.png) | ![2_vis](autoannotate/vis_outputs/2_vis.png) |
+
 
 
 ## ROS Node

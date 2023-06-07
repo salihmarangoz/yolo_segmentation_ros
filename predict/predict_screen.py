@@ -16,6 +16,12 @@ bbox = (left, top, right, lower)
 # Load model
 model = YOLO(SCRIPT_PATH + "/../model/best.pt")
 
+# a dirty hack to replace "pepper" with "orange"
+for k,v in model.names.items():
+  if v == "orange":
+    model.names[k] = "pepper"
+    break
+
 cv_window_str = "YOLOv8. PRESS Q TO QUIT. PRESS OTHER KEYS TO CONTINUE."
 cv2.namedWindow(cv_window_str, cv2.WINDOW_NORMAL)
 with mss() as sct:

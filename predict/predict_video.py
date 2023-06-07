@@ -9,6 +9,12 @@ SCRIPT_PATH=os.path.dirname(os.path.realpath(__file__))
 model_path = SCRIPT_PATH + "/../model/best.pt"
 model = YOLO(model_path)
 
+# a dirty hack to replace "pepper" with "orange"
+for k,v in model.names.items():
+  if v == "orange":
+    model.names[k] = "pepper"
+    break
+
 # Open the video file
 video_path = SCRIPT_PATH + "/../example_data/video.mp4"
 cap = cv2.VideoCapture(video_path)
