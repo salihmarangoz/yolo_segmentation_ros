@@ -1,6 +1,6 @@
 # yolo_segmentation_ros
 
-Sweet pepper detection+segmentation+tracking via YOLOv8. Alternative to `agrobot_mrcnn_ros` and `mask_rcnn_ros`. Uses `mask_rcnn_ros/Result` for publishing the results.
+Sweet pepper detection+segmentation+tracking via YOLOv8. Alternative to `agrobot_mrcnn_ros` and `mask_rcnn_ros`. Uses `mask_rcnn_ros/Result` and `yolact_ros_msgs/Detections` for publishing the results.
 
 Watch my quick experiment on YouTube:
 
