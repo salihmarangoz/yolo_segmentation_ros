@@ -10,7 +10,7 @@
         <arg name="camera_info_url" value=""/>
         <arg name="flip_horizontal" value="false"/>
         <arg name="flip_vertical" value="false"/>
-        <arg name="loop_videofile" value="true"/>
+        <arg name="loop_videofile" value="false"/>
     </include>
 
     <node name="image_view" pkg="rqt_image_view" type="rqt_image_view" args="/yolo_segmentation_ros_node/visualization"/>
