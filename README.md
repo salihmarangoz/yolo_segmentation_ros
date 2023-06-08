@@ -2,9 +2,11 @@
 
 Sweet pepper detection+segmentation+tracking via YOLOv8. Alternative to `agrobot_mrcnn_ros` and `mask_rcnn_ros`. Uses `mask_rcnn_ros/Result` and `yolact_ros_msgs/Detections` for publishing the results.
 
-Watch my quick experiment on YouTube:
+Watch my quick experiment on YouTube (`yolov8l-seg-V1`).
 
 [![Watch the video](https://img.youtube.com/vi/ferqPKNXs0U/maxresdefault.jpg)](https://youtu.be/ferqPKNXs0U)
+
+Also for `yolov8n-seg-V2`: https://youtu.be/UmDr89TXKYQ
 
 ## Installation
 
