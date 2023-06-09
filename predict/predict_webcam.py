@@ -10,12 +10,9 @@ SCRIPT_PATH=os.path.dirname(os.path.realpath(__file__))
 model_path = SCRIPT_PATH + "/../model/best.pt"
 model = YOLO(model_path)
 
-# a dirty hack to replace "pepper" with "orange"
+# a dirty hack to replace all class names with "pepper"
 for k,v in model.names.items():
-  if v == "orange":
-    model.names[k] = "pepper"
-  if v == "person":
-    model.names[k] = "pepper"
+  model.names[k] = "pepper"
 
 # Open the video file
 cap = cv2.VideoCapture(0)

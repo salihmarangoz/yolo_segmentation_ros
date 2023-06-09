@@ -14,7 +14,9 @@ Also for `yolov8n-seg-V2`: https://youtu.be/UmDr89TXKYQ
 $ pip install -r requirements.txt
 ```
 
-**Download Model:** [If you would like to skip the training part, download the `best.pt` from here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better. Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times. Currently recommended: `yolov8l-seg-V1`, best nano model which can run on CPU: `yolov8n-seg-V2`
+**READ FIRST!** Models are named in `yolov8[SIZE]-seg-[VERSION]`. Always prefer latest version of that specific model size. Sizes are nano (**n**), small (**s**), medium (**m**), large (**l**), x-large (**x**). Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times. Prefer the nano models to efficiently run on the CPU. Prefer the large models for modern GPU's. Weights are 
+
+**Download Model:** [Download the `weights/best.pt` for your model preference](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better.  Currently recommended best large model for GPU is `yolov8l-seg-V1`, best nano model for CPU is `yolov8n-seg-V2`.
 
 Tested on;
 
@@ -26,23 +28,25 @@ Tested on;
 
 ## Training
 
-This dataset also may be available [here](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing).
+You can skip this step if you would like to use pre-trained models for sweet pepper detection.
+
+This dataset also may be available [here](https://drive.google.com/drive/folders/1_vcGtZ2e_fBL40v9YXFtJwGn-FRkIhee?usp=sharing). If you can download the dataset you can skip to the training part.
 
  ```bash
  $ cd yolo_segmentation_ros/train
  ```
 
+**Prepare Dataset:** Follow the steps below.
+
 1. **(Mandatory)** Prepare BUP20
    1. Download [BUP20](http://agrobotics.uni-bonn.de/sweet_pepper_dataset/) dataset and extract `BUP20.tar.gz` into a folder. (it should have the name `CKA_sweet_pepper_2020_summer`)
    2. Modify `DATASET_PATH` at the top of the notebook then run the notebook `train/bup20_to_yolov8.ipynb ` to create yolov8 dataset. 
-
 2. **(Optional)** Prepare Sweet Pepper and Peduncle Segmentation Dataset from Kaggle:
    1. Download [Sweet Pepper and Peduncle Segmentation Dataset from Kaggle](https://www.kaggle.com/datasets/lemontyc/sweet-pepper?resource=download) and extract into a folder. (it should have the name `dataset_620_red_yellow_cart_only`)
    2. Modify `DATASET_PATH` at the top of the notebook then run the notebook `train/dataset_620_to_yolov8.ipynb ` to create yolov8 dataset.
-
 3. **(Mandatory)** Split train/validation using `split_train_val.ipynb`
 
-After these steps, the dataset should be ready. For training the model:
+**Training:** After these steps, the dataset should be ready. For training the model:
 
 1. Run the script `train/train.py` for training. This should take about 15-20 mins.
 2. Copy the `train/runs/segment/train/weights/best.pt` to `model/best.pt`
