@@ -3,3 +3,5 @@ numpy
 mss
 opencv-python
 rospkg
+dill
+lap>=0.4

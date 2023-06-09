@@ -10,9 +10,32 @@ Also for `yolov8n-seg-V2`: https://youtu.be/UmDr89TXKYQ
 
 ## Installation
 
+Choose **a** or **b**.
+
+### a) User Python Env
+
+Easiest way:
+
 ```bash
 $ pip install -r requirements.txt
 ```
+
+### b) Virtual Python Env
+
+If you don't want to mess up with your current environment.
+
+```bash
+$ mkdir "$HOME/.virtualenvs"
+$ cd "$HOME/.virtualenvs"
+$ python3 -m venv yolo_segmentation_ros
+$ source yolo_segmentation_ros/bin/activate
+$ cd ~/catkin_ws/src/yolo_segmentation_ros
+$ pip install -r requirements.txt
+```
+
+If you choose this option, don't forget to update `yolo_segmentation_ros_python` param in the `launch/start.launch` file.
+
+### Download Weights
 
 **READ FIRST!** Models are named in `yolov8[SIZE]-seg-[VERSION]`. Always prefer latest version of that specific model size. Sizes are nano (**n**), small (**s**), medium (**m**), large (**l**), x-large (**x**). Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times. Prefer the nano models to efficiently run on the CPU. Prefer the large models for modern GPU's. Weights are 
 
