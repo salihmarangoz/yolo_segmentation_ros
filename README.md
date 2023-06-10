@@ -37,9 +37,20 @@ If you choose this option, don't forget to update `yolo_segmentation_ros_python`
 
 ### Download Weights
 
-**READ FIRST!** Models are named in `yolov8[SIZE]-seg-[VERSION]`. Always prefer latest version of that specific model size. Sizes are nano (**n**), small (**s**), medium (**m**), large (**l**), x-large (**x**). Click [here](https://docs.ultralytics.com/tasks/segment/#models) for more information about the base models, their performances and computation times. Prefer the nano models to efficiently run on the CPU. Prefer the large models for modern GPU's. Weights are 
+**Read First!** This table is copied from [here](https://docs.ultralytics.com/tasks/segment/#models).
 
-**Download Model:** [Download the `weights/best.pt` for your model preference](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better.  Currently recommended best large model for GPU is `yolov8l-seg-V1`, best nano model for CPU is `yolov8n-seg-V2`.
+| Model                                                        | mAPbox 50-95 | mAPmask 50-95 | Speed CPU ONNX (ms) | Speed A100 TensorRT (ms) | params (M) | FLOPs (B) |
+| :----------------------------------------------------------- | :----------- | :------------ | :------------------ | :----------------------- | :--------- | :-------- |
+| [YOLOv8n-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n-seg.pt) | 36.7         | 30.5          | 96.1                | **1.21**                 | 3.4        | 12.6      |
+| [YOLOv8s-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-seg.pt) | 44.6         | 36.8          | 155.7               | **1.47**                 | 11.8       | 42.6      |
+| [YOLOv8m-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m-seg.pt) | 49.9         | 40.8          | 317.0               | **2.18**                 | 27.3       | 110.2     |
+| [YOLOv8l-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l-seg.pt) | 52.3         | 42.6          | 572.4               | **2.79**                 | 46.0       | 220.5     |
+| [YOLOv8x-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x-seg.pt) | 53.4         | 43.4          | 712.1               | **4.02**                 | 71.8       | 344.1     |
+
+- mAPval values are for single-model single-scale on COCO val2017 dataset.
+- Speed averaged over COCO val images using an Amazon EC2 P4d instance.
+
+**Download Model:** Models are named in `yolov8[SIZE]-seg-[VERSION]`. Always prefer latest version of that specific model size. Sizes are nano (**n**), small (**s**), medium (**m**), large (**l**), x-large (**x**). [DOWNLOAD the `weights/best.pt`](https://drive.google.com/drive/folders/1aZ4MpL7zXARpdr7hky6iucenSEoaDH9W?usp=sharing) and place it into the `model` folder. Small models run faster but worse, large models run slower but better.  Currently recommended best large model for GPU is `yolov8l-seg-V1`, best nano model for CPU is `yolov8n-seg-V2`.
 
 Tested on;
 
