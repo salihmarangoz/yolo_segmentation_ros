@@ -50,9 +50,11 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
   <depend>rospy</depend>
-  <depend>mask_rcnn_ros</depend>
-  <depend>yolact_ros_msgs</depend>
   <depend>cv_bridge</depend>
+
+  <!-- optional for output detections -->
+  <!-- <depend>mask_rcnn_ros</depend> -->
+  <!-- <depend>yolact_ros_msgs</depend> -->
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

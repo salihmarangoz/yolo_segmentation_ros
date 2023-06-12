@@ -100,15 +100,14 @@ $ python predict_video.py.py
 $ python predict_images.py
 ```
 
-
 ## ROS Node
+
+Optional packages `mask_rcnn_ros` and `yolact_ros_msgs` are used for outputs. The output topics will not be available if the package is not found.
 
 The ROS node script is located here: `scripts/ros_node.py`
 
-**TODO:** Tracking id's are computed but can't be published because there is no applicable fields in the output message types. Disable tracking by setting `~tracking` to False to reduce computations.
-
 ```bash
-# Install dependency: sudo apt install ros-noetic-video_stream_opencv
+# Install dependency for DEMO: sudo apt install ros-noetic-video_stream_opencv
 $ roslaunch yolo_segmentation_ros demo.launch
 ```
 

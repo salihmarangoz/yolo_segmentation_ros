@@ -8,7 +8,6 @@ project(yolo_segmentation_ros)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  mask_rcnn_ros
   rospy
 )
 
@@ -104,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES yolo_segmentation_ros
-#  CATKIN_DEPENDS mask_rcnn_ros rospy
+#  CATKIN_DEPENDS rospy
 #  DEPENDS system_lib
 )
 
