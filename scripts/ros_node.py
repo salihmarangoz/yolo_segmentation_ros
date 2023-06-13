@@ -106,9 +106,6 @@ class YoloNode:
       self.panoptic_image_pub  = FakePublisher()
       self.panoptic_labels_pub = FakePublisher()
 
-    self.result_pub = rospy.Publisher('/mask_rcnn/result', Result, queue_size=1)
-    self.detections_pub = rospy.Publisher("~detections", Detections, queue_size=1)
-
     # Subscribers
     if self.use_compressed_image is None:
       self.use_compressed_image = self.image_topic.endswith('/compressed')
