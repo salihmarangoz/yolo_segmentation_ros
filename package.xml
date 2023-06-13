@@ -52,6 +52,7 @@
   <depend>rospy</depend>
   <depend>mask_rcnn_ros</depend>
   <depend>yolact_ros_msgs</depend>
+  <depend>panoptic_mapping_msgs</depend>
   <depend>cv_bridge</depend>
 
   <!-- The export tag contains other, unspecified, tags -->

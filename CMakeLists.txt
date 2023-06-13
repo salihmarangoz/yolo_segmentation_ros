@@ -10,6 +10,7 @@ project(yolo_segmentation_ros)
 find_package(catkin REQUIRED COMPONENTS
   mask_rcnn_ros
   rospy
+  panoptic_mapping_msgs
 )
 
 ## System dependencies are found with CMake's conventions
