@@ -118,7 +118,7 @@ class YoloNode:
 
   def process_image(self, cv_image, header):
     #cv_image = cv2.rotate(cv_image, cv2.ROTATE_90_CLOCKWISE) # TODO
-
+    height, width, channels = cv_image.shape
     # Run inference
     if self.tracking:
       result = self.model.track(cv_image, retina_masks=self.retina_masks, conf=self.score_threshold, iou=self.iou, persist=True, device=self.device, verbose=self.verbose)[0]
@@ -151,10 +151,10 @@ class YoloNode:
       self.result_pub.publish(result_msg)
 
     # Publish "DetectronLabels msg with the segmentation image"
-    if self.panoptic_image_pub.get_num_connections()> 0 or self.panoptic_labels_pub.get_num_connections() > 0:
-      seg_image_msg, det_label_msg = self. _build_detectron_label_msg(classes, scores, boxes, masks, ids, header)
-      self.panoptic_image_pub.publish(seg_image_msg)
-      self.panoptic_labels_pub.publish(det_label_msg)
+    #if self.panoptic_image_pub.get_num_connections()> 0 or self.panoptic_labels_pub.get_num_connections() > 0:
+    seg_image_msg, det_label_msg = self. _build_detectron_label_msg(classes, scores, boxes, masks, ids, header, height, width)
+    self.panoptic_image_pub.publish(seg_image_msg)
+    self.panoptic_labels_pub.publish(det_label_msg)
 
     # Publish visualization
     if self.image_pub.get_num_connections() > 0:
@@ -175,13 +175,13 @@ class YoloNode:
 #############################
 
   def callback(self, data):
-    if self.image_pub.get_num_connections() == 0 and self.result_pub.get_num_connections() == 0 and self.detections_pub.get_num_connections() == 0:
+    if self.image_pub.get_num_connections() == 0 and self.result_pub.get_num_connections() == 0 and self.detections_pub.get_num_connections() == 0 and self.panoptic_image_pub.get_num_connections() == 0 and self.panoptic_labels_pub.get_num_connections() == 0:
         return
     cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
     self.process_image(cv_image, data.header)
 
   def callback_compressed(self, data):
-    if self.image_pub.get_num_connections() == 0 and self.result_pub.get_num_connections() == 0 and self.detections_pub.get_num_connections() == 0:
+    if self.image_pub.get_num_connections() == 0 and self.result_pub.get_num_connections() == 0 and self.detections_pub.get_num_connections() == 0 and self.panoptic_image_pub.get_num_connections() == 0 and self.panoptic_labels_pub.get_num_connections() == 0:
         return
     np_arr = np.fromstring(data.data, np.uint8)
     cv_image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
@@ -317,18 +317,23 @@ class YoloNode:
 
     return result_msg
 
-  def _build_detectron_label_msg(self, classes, scores, boxes, masks, ids, image_header):
-
+  def _build_detectron_label_msg(self, classes, scores, boxes, masks, ids, image_header, height, width):
+    if(len(masks) > 0):
+      xor_image = np.zeros(masks[0].shape, np.uint8)
+      zero_image = np.zeros(xor_image.shape, np.uint8)
+    else:
+      shape = [height, width]
+      xor_image = np.zeros(shape, np.uint8)
+      zero_image = np.zeros(xor_image.shape, np.uint8)
     instance_counter = self.instance_counter
     det_labels = DetectronLabels()
     det_labels.header = image_header
-    xor_image = np.zeros(masks[0].shape, np.uint8)
-    zero_image = np.zeros(xor_image.shape, np.uint8)
+
     #print(masks[0].shape)
     bg_label = DetectronLabel()
     bg_label.id = 0
     bg_label.is_thing = False
-    bg_label.score = 0.7
+    bg_label.score = 0.9
     bg_label.category_id = 0
     bg_label.instance_id = 0
     det_labels.labels.append(bg_label)
