@@ -1,6 +1,6 @@
 # yolo_segmentation_ros
 
-Sweet pepper detection+segmentation+tracking via YOLOv8. Uses `mask_rcnn_ros/Result` and `yolact_ros_msgs/Detections` for publishing the results and can be used for an alternative to `agrobot_mrcnn_ros` and `mask_rcnn_ros` packages. Watch a quick experiment on YouTube (`yolov8l-seg-V1`):
+Sweet pepper detection+segmentation+tracking via YOLOv8. Also an alternative easy replacement to `agrobot_mrcnn_ros` and `mask_rcnn_ros` packages. Watch a quick experiment on YouTube (`yolov8l-seg-V1`):
 
 [![Watch the video](https://img.youtube.com/vi/ferqPKNXs0U/maxresdefault.jpg)](https://youtu.be/ferqPKNXs0U)
 
@@ -102,13 +102,22 @@ $ python predict_images.py
 
 ## ROS Node
 
-Optional packages `mask_rcnn_ros` and `yolact_ros_msgs` are used for outputs. The output topics will not be available if the package is not found.
+### ROS Dependencies
+
+These dependencies are optional. Outputs will be enabled if the related dependency is installed.
+
+- `mask_rcnn_ros/Result`: https://github.com/rohitmenon86/mask_rcnn_ros
+
+- `yolact_ros_msgs/Detections`: https://github.com/Eruvae/yolact_ros_msgs
+- `panoptic_mapping_msgs/DetectronLabels`: https://github.com/rohitmenon86/panoptic_mapping
+
+### Demo
 
 The ROS node script is located here: `scripts/ros_node.py`
 
 ```bash
-# Install dependency for DEMO: sudo apt install ros-noetic-video_stream_opencv
-$ roslaunch yolo_segmentation_ros demo.launch
+$ sudo apt install ros-noetic-video_stream_opencv # Install dependency
+$ roslaunch yolo_segmentation_ros demo.launch # DEMO!
 ```
 
 
