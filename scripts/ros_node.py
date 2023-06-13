@@ -106,9 +106,6 @@ class YoloNode:
       self.panoptic_image_pub  = FakePublisher()
       self.panoptic_labels_pub = FakePublisher()
 
-    self.result_pub = rospy.Publisher('/mask_rcnn/result', Result, queue_size=1)
-    self.detections_pub = rospy.Publisher("~detections", Detections, queue_size=1)
-
     # Subscribers
     if self.use_compressed_image is None:
       self.use_compressed_image = self.image_topic.endswith('/compressed')
@@ -145,7 +142,7 @@ class YoloNode:
 
     # Publish "Detections" msg
     if self.detections_pub.get_num_connections() > 0:
-      dets = self.generate_detections_msg(classes, scores, boxes, masks, ids, header)
+      dets = self._build_detections_msg(classes, scores, boxes, masks, ids, header)
       self.detections_pub.publish(dets)
 
     # Publish "Result" msg
@@ -229,7 +226,7 @@ class YoloNode:
         image[:, :, c] = np.where(mask == 1, (1 - alpha) * image[:, :, c] + alpha * mask * color[c], image[:, :, c])
     return image
 
-  def generate_detections_msg(self, classes, scores, boxes, masks, ids, image_header):
+  def _build_detections_msg(self, classes, scores, boxes, masks, ids, image_header):
     dets_msg = Detections()
     instance_counter = self.instance_counter # self.instance_counter is modified by process_image
     for detnum in range(len(classes)):
