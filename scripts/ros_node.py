@@ -320,16 +320,19 @@ class YoloNode:
     return result_msg
 
   def _build_detectron_label_msg(self, classes, scores, boxes, masks, ids, image_header, height, width):
-    if(len(masks) > 0):
-      xor_image = np.zeros(masks[0].shape, np.uint8)
-      zero_image = np.zeros(xor_image.shape, np.uint8)
-    else:
-      shape = [height, width]
-      xor_image = np.zeros(shape, np.uint8)
-      zero_image = np.zeros(xor_image.shape, np.uint8)
+    
     instance_counter = self.instance_counter
     det_labels = DetectronLabels()
     det_labels.header = image_header
+
+    if(len(masks) > 0):
+      xor_image = np.zeros(masks[0].shape, np.int32)
+      zero_image = np.zeros(xor_image.shape, np.int32)
+    else:
+      shape = [height, width]
+      xor_image = np.zeros(shape, np.int32)
+      zero_image = np.zeros(xor_image.shape, np.int32)
+    
 
     #print(masks[0].shape)
     bg_label = DetectronLabel()
@@ -370,12 +373,17 @@ class YoloNode:
     seg_image.header = image_header
     seg_image.height = zero_image.shape[0]
     seg_image.width =  zero_image.shape[1]
-    seg_image.encoding = "mono8"
+    seg_image.encoding = "32SC1"
     seg_image.is_bigendian = False
-    seg_image.step = seg_image.width
-    temp = zero_image.astype(np.uint8)
+    seg_image.step = seg_image.width*4
+    temp = zero_image.astype(np.int32)
     seg_image.data = temp.tobytes()
 
+    # Create black blank image
+    image = np.zeros((height, width, 3), np.uint8)
+    rgb_color = [255, 255,255]
+    # Since OpenCV uses BGR, convert the color first
+    color = tuple(reversed(rgb_color))
     return seg_image, det_labels
 
 def main(args):
