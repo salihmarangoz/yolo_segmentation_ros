@@ -2,13 +2,13 @@
 <launch>
 
     <!-- User Python Env -->
-    <arg name="yolo_segmentation_ros_python" value=""/>
+    <!-- <arg name="yolo_segmentation_ros_python" value=""/> -->
 
     <!-- Virtual Python Env -->
-    <!-- <arg name="yolo_segmentation_ros_python" value="$(env HOME)/.virtualenvs/yolo_segmentation_ros/bin/python3"/> -->
+    <arg name="yolo_segmentation_ros_python" value="$(env HOME)/.virtualenvs/yolo_segmentation_ros/bin/python3"/>
 
-    <node name="yolo_segmentation_ros_node" pkg="yolo_segmentation_ros" type="ros_node.py" launch-prefix="$(arg yolo_segmentation_ros_python)">
-        <remap from="input_image" to="/camera/image_raw"/>
+    <node name="yolo_segmentation_ros_node" pkg="yolo_segmentation_ros" type="ros_node.py" launch-prefix="$(arg yolo_segmentation_ros_python)" output="screen">
+        <remap from="input_image" to="/zed2i/left/image_rect_color"/>
     </node>
 
 </launch>
