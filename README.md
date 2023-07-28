@@ -85,7 +85,7 @@ This dataset also may be available [here](https://drive.google.com/drive/folders
 ## Prediction
 
 ```bash
-$ cd yolo_segmentation_ros/predict
+$ roscd yolo_segmentation_ros/predict
 
 # Predict a region of your screen:
 $ python predict_screen.py
@@ -94,7 +94,7 @@ $ python predict_screen.py
 $ python predict_webcam.py
 
 # Predict using a video:
-$ python predict_video.py.py
+$ python predict_video.py
 
 # Predict using images:
 $ python predict_images.py
