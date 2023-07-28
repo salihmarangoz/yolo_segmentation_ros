@@ -117,7 +117,8 @@ The ROS node script is located here: `scripts/ros_node.py`
 
 ```bash
 $ sudo apt install ros-noetic-video_stream_opencv # Install dependency
-$ roslaunch yolo_segmentation_ros demo.launch # DEMO!
+$ roslaunch yolo_segmentation_ros demo.launch # DEMO (with User Python Env)
+$ roslaunch yolo_segmentation_ros demo.launch yolo_segmentation_ros_python:="$HOME/.virtualenvs/yolo_segmentation_ros/bin/python3" # DEMO (with Virtual Python Env)
 ```
 
 

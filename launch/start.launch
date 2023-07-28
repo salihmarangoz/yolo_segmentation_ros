@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- User Python Env -->
-    <arg name="yolo_segmentation_ros_python" value=""/>
+    <arg name="yolo_segmentation_ros_python" default=""/> <!-- e.g. $(env HOME)/.virtualenvs/yolo_segmentation_ros/bin/python3 -->
 
-    <!-- Virtual Python Env -->
-    <!-- <arg name="yolo_segmentation_ros_python" value="$(env HOME)/.virtualenvs/yolo_segmentation_ros/bin/python3"/> -->
+    <arg name="output" default="screen" />
 
-    <node name="yolo_segmentation_ros_node" pkg="yolo_segmentation_ros" type="ros_node.py" launch-prefix="$(arg yolo_segmentation_ros_python)">
-        <remap from="input_image" to="/camera/image_raw"/>
+    <arg name="input_image" default="/camera/image_raw"/>
+
+    <node name="yolo_segmentation_ros_node" pkg="yolo_segmentation_ros" type="ros_node.py" launch-prefix="$(arg yolo_segmentation_ros_python)" output="$(arg output)">
+        <remap from="input_image" to="$(arg input_image)"/>
     </node>
 
 </launch>
