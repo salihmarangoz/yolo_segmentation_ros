@@ -192,36 +192,37 @@ class YoloNode:
 #############################
 
   def generate_visualization(self, image, classes, scores, boxes, masks, ids=None):
-      res_image = image
-      instance_counter = self.instance_counter # self.instance_counter is modified by process_image
-      for detnum in range(len(classes)):
-        if ids is None:
-          #color = GLASBEY[instance_counter % 256] # psychedelic peppers
-          color = GLASBEY[instance_counter - self.instance_counter] # unique colors in the frame
-          #color = GLASBEY[42] # single color in the frame
-          instance_counter += 1
-        else:
-          color = GLASBEY[ids[detnum] % 256]
+    res_image = image
+    instance_counter = self.instance_counter # self.instance_counter is modified by process_image
+    for detnum in range(len(classes)):
+      if ids is None:
+        #color = GLASBEY[instance_counter % 256] # psychedelic peppers
+        color = GLASBEY[instance_counter - self.instance_counter] # unique colors in the frame
+        #color = GLASBEY[42] # single color in the frame
+        instance_counter += 1
+      else:
+        color = GLASBEY[ids[detnum] % 256]
+      color = tuple(reversed(color)) # RGB -> BGR
 
-        x1, y1, x2, y2 = boxes[detnum].astype(int)
-        if self.display_bboxes:
-           res_image = cv2.rectangle(res_image, (x1, y1), (x2, y2), color, 1)
+      x1, y1, x2, y2 = boxes[detnum].astype(int)
+      if self.display_bboxes:
+        res_image = cv2.rectangle(res_image, (x1, y1), (x2, y2), color, 1)
 
-        if self.display_text:
-           label = CLASS_NAMES[classes[detnum]]
-           text_str = '%s: %.2f' % (label, scores[detnum]) if self.display_scores else label
-           res_image = cv2.putText(res_image, text_str, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2, cv2.LINE_AA)
+      if self.display_text:
+        label = CLASS_NAMES[classes[detnum]]
+        text_str = '%s: %.2f' % (label, scores[detnum]) if self.display_scores else label
+        res_image = cv2.putText(res_image, text_str, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2, cv2.LINE_AA)
 
-        if self.display_masks:
-          res_image = self.apply_mask(res_image, masks[detnum,:,:], color)
+      if self.display_masks:
+        res_image = self.apply_mask(res_image, masks[detnum,:,:], color)
 
-      if self.display_fps:
-        self.processing_times_queue.append(rospy.get_rostime())
-        if len(self.processing_times_queue) > 1:
-            self.fps = (len(self.processing_times_queue) - 1) / (self.processing_times_queue[-1] - self.processing_times_queue[0]).to_sec()
-            res_image = cv2.putText(res_image, '%.1f FPS' % self.fps, (0, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,0,0), 2, cv2.LINE_AA)
+    if self.display_fps:
+      self.processing_times_queue.append(rospy.get_rostime())
+      if len(self.processing_times_queue) > 1:
+        self.fps = (len(self.processing_times_queue) - 1) / (self.processing_times_queue[-1] - self.processing_times_queue[0]).to_sec()
+        res_image = cv2.putText(res_image, '%.1f FPS' % self.fps, (0, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,0,0), 2, cv2.LINE_AA)
 
-      return res_image
+    return res_image
 
   def apply_mask(self, image, mask, color, alpha=0.5):
     for c in range(3):
