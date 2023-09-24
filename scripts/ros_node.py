@@ -218,7 +218,7 @@ class YoloNode:
 
     if self.display_fps:
       self.processing_times_queue.append(rospy.get_rostime())
-      if len(self.processing_times_queue) > 1:
+      if len(self.processing_times_queue) > 1 and (self.processing_times_queue[-1] - self.processing_times_queue[0]).to_sec() > 0:
         self.fps = (len(self.processing_times_queue) - 1) / (self.processing_times_queue[-1] - self.processing_times_queue[0]).to_sec()
         res_image = cv2.putText(res_image, '%.1f FPS' % self.fps, (0, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,0,0), 2, cv2.LINE_AA)
 
